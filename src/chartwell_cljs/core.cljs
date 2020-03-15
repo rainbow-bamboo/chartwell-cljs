@@ -47,9 +47,10 @@
    return a reagent span component."
   [content color id]
   ^{:key id}
-  [:span (reduce str content) {:style {:color color}
-                     :id id
-                     :class "chart-segment"}])
+  [:span  {:style {:color color}
+           :id id
+           :class "chart-segment"}
+   (reduce str content)])
 
 ;; It's meant to work with the (herb)[http://herb.roosta.sh/] library for more complex
 ;; styling like: (chart-segment 10 "#bee" (<id sample-id-func))
