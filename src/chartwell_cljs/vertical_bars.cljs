@@ -1,6 +1,6 @@
 (ns chartwell-cljs.vertical-bars
   (:require
-   [chartwell-cljs.core :refer [chart-segment sample-id-func]]))
+   [chartwell-cljs.core :refer [chart-segment size-id-func]]))
 
 ;; Note how the key prop is stored as meta
 ;; (meta (chart-segment "lol" "red" (sample-id-func "101010")))
@@ -26,8 +26,8 @@
                                       (class-func size color)))
     (map vector sizes colors))])
 
-(def sample-sizes [10 50 100])
-(def sample-colors ["#bee" "#fab" "#ada"])
+;; (def sample-sizes [10 50 100])
+;; (def sample-colors ["#bee" "#fab" "#ada"])
 
 ;; (defn sample-class-func
 ;;   "Given a a size and color, test if the value is below 50,and
