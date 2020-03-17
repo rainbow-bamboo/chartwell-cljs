@@ -43,18 +43,17 @@
 ;; since it'll represent the smallest building block of a chart.
 
 (defn chart-segment
-  "Given the integer size of the segment, a hexcode color, and an id string,
+  "Given the integer size of the segment, a hexcode color, and a class string,
    return a reagent span component."
-  [content color id]
-  ^{:key id}
-  [:span  {:style {:color color}
-           :id id
-           :class "chart-segment"}
+  [content color class]
+  ^{:key (str class (rand-int 10000))}
+  [:span {:style {:color color}
+          :class (str "chart-segment " class)}
    (reduce str content)])
 
 ;; It's meant to work with the (herb)[http://herb.roosta.sh/] library for more complex
 ;; styling like: (chart-segment 10 "#bee" (<id sample-id-func))
 
 ;; But we can substitute our own id generator if necessary
-(defn sample-id-func [content]
-  (str content (.getTime (js/Date.))))
+(defn size-id-func [size color]
+  (str size (.getTime (js/Date.))))
