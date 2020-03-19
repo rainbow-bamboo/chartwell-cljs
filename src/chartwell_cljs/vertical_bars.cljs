@@ -9,6 +9,9 @@
 ;; Our dream is to return
 ;; [:div.vertical-bar [chart-segment _ _ _ ] [chart-segment _ _ _ ] ]
 
+;; We're handing the anonymous fn, [size color] pairs
+;; and then we're destructuring it through the [[x y]] syntax
+;; in order to generate list of `chart-segment`
 (defn vertical-bars [sizes colors class]
   [:div.vertical-bar
    (map
@@ -18,6 +21,9 @@
     (map vector sizes colors))])
 
 ;; I'm sure that there's a more elegant way of doing this in one
+;; function.
+;; Note that the `class-func` must be a function that accepts [size color]
+;; [ Is this something we can express in clojure.spec? ]
 (defn herb-vertical-bars [sizes colors class-func]
   [:div.vertical-bar
    (map

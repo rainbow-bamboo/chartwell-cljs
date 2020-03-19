@@ -1,4 +1,4 @@
-(defproject chartwell-cljs "0.1.5"
+(defproject chartwell-cljs "0.1.6"
   :description "This library generates reagent components which can be used to create charts when paired with the font-family, FF Chartwell."
   :url "https://clojars.org/chartwell-cljs"
   :license {:name "EPL-2.0 OR GPL-2.0-or-later WITH Classpath-exception-2.0"
