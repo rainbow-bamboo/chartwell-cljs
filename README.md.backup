@@ -1,5 +1,6 @@
-# Chartwell-Cljs
-This library generates reagent components which can be used to create charts when paired with the font-family, FF Chartwell.
+# chartwell-cljs
+
+A Clojure library designed to ... well, that part is up to you.
 
 ## Usage
 

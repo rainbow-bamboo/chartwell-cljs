@@ -12,25 +12,27 @@
 ;; We're handing the anonymous fn, [size color] pairs
 ;; and then we're destructuring it through the [[x y]] syntax
 ;; in order to generate list of `chart-segment`
-(defn vertical-bars [sizes colors class]
+(defn vertical-bars [sizes colors grid class]
   [:div.vertical-bar
-   (map
-    (fn [[size color]] (chart-segment (str size ",")
-                               color
-                               class))
-    (map vector sizes colors))])
+   (cons [:span {:class "vertical-bars-grid"} (str grid "+")]
+    (map
+     (fn [[size color]] (chart-segment (str size ",")
+                                       color
+                                       class))
+     (map vector sizes colors)))])
 
 ;; I'm sure that there's a more elegant way of doing this in one
 ;; function.
 ;; Note that the `class-func` must be a function that accepts [size color]
 ;; [ Is this something we can express in clojure.spec? ]
-(defn herb-vertical-bars [sizes colors class-func]
-  [:div.vertical-bar
-   (map
-    (fn [[size color]] (chart-segment (str size ",")
-                                      color
-                                      (class-func size color)))
-    (map vector sizes colors))])
+(defn herb-vertical-bars [sizes colors grid class-func]
+  [:div.vertical-bars
+   (cons [:span {:class "vertical-bars-grid"} (str grid "+")]
+         (map
+          (fn [[size color]] (cw/chart-segment (str size "+")
+                                               color
+                                               (class-func size color)))
+          (map vector sizes colors)))])
 
 ;; (def sample-sizes [10 50 100])
 ;; (def sample-colors ["#bee" "#fab" "#ada"])
